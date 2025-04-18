@@ -19,7 +19,7 @@ public class EstatisticasController {
     private final EstatisticasService estatisticasService;
 
     @GetMapping
-    @Operation(description = "Endpoint rosponsável por buscar estatísticas de transações")
+    @Operation(description = "Endpoint responsável por buscar estatísticas de transações")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Busca efetuada com sucesso"),
             @ApiResponse(responseCode = "400", description = "Erro na busca de estatísticas de transações"),

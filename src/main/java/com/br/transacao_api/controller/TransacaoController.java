@@ -18,7 +18,7 @@ public class TransacaoController {
     private final TransacaoService transacaoService;
 
     @PostMapping
-    @Operation(description = "Endpoint rsponsável por adicionar transações")
+    @Operation(description = "Endpoint responsável por adicionar transações")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Transação criada com sucesso"),
             @ApiResponse(responseCode = "422", description = "Campos não atendem os requisitos da transação"),

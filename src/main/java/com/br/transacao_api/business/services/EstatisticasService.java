@@ -19,6 +19,8 @@ public class EstatisticasService {
     public EstatisticasResponseDTO calcularEstatisticasTransacoes(Integer intervaloBusca) {
         log.info("Iniciado o processamento de calcular estatísticas de transações pelo período de tempo. " + intervaloBusca);
 
+        long start = System.currentTimeMillis(); // Inicia o cronômetro. Calculando tempo dos calculos
+
         List<TransacaoRequestDTO> transacoes = transacaoService.buscarTransacoes(intervaloBusca);
 
         if(transacoes.isEmpty()) {
@@ -28,6 +30,9 @@ public class EstatisticasService {
         DoubleSummaryStatistics estatisticasTransacoes = transacoes.stream()
                 .mapToDouble(TransacaoRequestDTO::valor)
                 .summaryStatistics();
+
+        long finish = System.currentTimeMillis(); // Para finalizar o cronômetro
+        System.out.println("Tempo de execução: " + (finish - start) + "ms");
 
         log.info("Estatísticas calculadas com sucesso");
         return new EstatisticasResponseDTO(estatisticasTransacoes.getCount(), estatisticasTransacoes.getSum(),
